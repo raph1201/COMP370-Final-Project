@@ -26,13 +26,16 @@ def get_args():
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 API_KEY = 'd2abbe0513984b9b9482468339ca750b'
 
-#NEWS_QUERY_URL = "https://newsapi.org/v2/everything?qInTitle={}&from={}&to={}&language=en&apiKey={}"    # Search by keywords in title
-NEWS_QUERY_URL = "https://newsapi.org/v2/everything?q={}&from={}&to={}&language=en&apiKey={}"          # Search by keywords in title and body
+NEWS_QUERY_URL = "https://newsapi.org/v2/everything?qInTitle={}&from={}&to={}&language=en&apiKey={}"   # Search by keywords in title
+#NEWS_QUERY_URL = "https://newsapi.org/v2/everything?q={}&from={}&to={}&language=en&apiKey={}"           # Search by keywords in title and body
 
-QUERY_STRING = "(Killers OR Killers) AND Flower AND Moon"
+QUERY_STRING = "Radical"
 
-END_DATE = date.today()                 # Today's date
-START_DATE = END_DATE.replace(month=10) # One month age
+START_DATE_1 = date(2023, 10, 31)       # October 31, 2023
+END_DATE_1 = date(2023, 11, 2)          # November 2, 2023
+
+START_DATE_2 = date(2023, 11, 3)        # November 3, 2023
+END_DATE_2 = date(2023, 11, 6)          # November 6, 2023
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~ FUNCTIONS ~~~~~~~~~#
@@ -49,7 +52,7 @@ def fetch_latest_news(output_file):
     query_formatted = format_string(QUERY_STRING)
 
     # Generate HTTP request
-    query_string = NEWS_QUERY_URL.format(query_formatted, START_DATE, END_DATE, API_KEY)
+    query_string = NEWS_QUERY_URL.format(query_formatted, START_DATE_2, END_DATE_2, API_KEY)
 
     # Send HTTP request
     response = requests.get(query_string)
